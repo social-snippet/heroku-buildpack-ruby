@@ -8,6 +8,7 @@ module LanguagePack
 
     def initialize(host_url, stack = nil)
       puts "Fetcher: url = #{host_url}, stack = #{stack}"
+      puts caller
       @config   = load_config
       @host_url = fetch_cdn(host_url)
       @host_url += File.basename(stack) if stack
