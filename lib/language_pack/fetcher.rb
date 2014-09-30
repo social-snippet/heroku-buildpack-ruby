@@ -7,6 +7,7 @@ module LanguagePack
     CDN_YAML_FILE = File.expand_path("../../../config/cdn.yml", __FILE__)
 
     def initialize(host_url, stack = nil)
+      puts "Fetcher: url = #{host_url}, stack = #{stack}"
       @config   = load_config
       @host_url = fetch_cdn(host_url)
       @host_url += File.basename(stack) if stack
