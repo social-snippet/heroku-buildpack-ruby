@@ -8,6 +8,7 @@ require "language_pack"
 require "language_pack/shell_helpers"
 
 p "ARGV:::", ARGV
+p `ls /app/vendor/apt/usr/bin`
 p `echo $PATH`
 p `which cmake`
 
