@@ -25,7 +25,8 @@ module LanguagePack
       if /^ruby-/ === path
         puts "@fetch_untar: host_url = #{@host_url}"
         if @host_url == "https://s3-external-1.amazonaws.com/heroku-buildpack-ruby"
-          @host_url += "cedar"
+          puts "@fetch_untar: join cedar"
+          @host_url.join("cedar")
         end
       end
       curl = curl_command("#{@host_url.join(path)} -s -o")
