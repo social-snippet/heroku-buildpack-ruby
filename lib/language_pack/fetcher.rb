@@ -21,8 +21,9 @@ module LanguagePack
     end
 
     def fetch_untar(path, files_to_extract = nil)
-      puts "@fetch_untar: #{path}"
+      puts "@fetch_untar: path = #{path}"
       if /^ruby-/ === path
+        puts "@fetch_untar: host_url = #{@host_url}"
         if @host_url == "https://s3-external-1.amazonaws.com/heroku-buildpack-ruby"
           @host_url += "cedar"
         end
