@@ -8,6 +8,7 @@ require "language_pack"
 require "language_pack/shell_helpers"
 
 p "ARGV:::", ARGV
+p `echo $PATH`
 p `which cmake`
 
 LanguagePack::Instrument.trace 'compile', 'app.compile' do
