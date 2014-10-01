@@ -7,6 +7,9 @@ module LanguagePack
     CDN_YAML_FILE = File.expand_path("../../../config/cdn.yml", __FILE__)
 
     def initialize(host_url, stack = nil)
+      if host_url == "https://s3-external-1.amazonaws.com/heroku-buildpack-ruby"
+        stack = "cedar" if stack.nil?
+      end
       puts "Fetcher: url = #{host_url}, stack = #{stack}"
       puts caller
       @config   = load_config
