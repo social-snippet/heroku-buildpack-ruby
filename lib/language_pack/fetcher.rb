@@ -22,6 +22,11 @@ module LanguagePack
 
     def fetch_untar(path, files_to_extract = nil)
       puts "@fetch_untar: #{path}"
+      if /^ruby-/ === path
+        if @host_url == "https://s3-external-1.amazonaws.com/heroku-buildpack-ruby"
+          @host_url += "cedar"
+        end
+      end
       curl = curl_command("#{@host_url.join(path)} -s -o")
       run!("#{curl} - | tar zxf - #{files_to_extract}")
     end
