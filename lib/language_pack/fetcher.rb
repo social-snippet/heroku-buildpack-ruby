@@ -15,16 +15,19 @@ module LanguagePack
     end
 
     def fetch(path)
+      puts "@fetch: #{path}"
       curl = curl_command("-O #{@host_url.join(path)}")
       run!(curl)
     end
 
     def fetch_untar(path, files_to_extract = nil)
+      puts "@fetch_untar: #{path}"
       curl = curl_command("#{@host_url.join(path)} -s -o")
       run!("#{curl} - | tar zxf - #{files_to_extract}")
     end
 
     def fetch_bunzip2(path, files_to_extract = nil)
+      puts "@fetch_bunzip2: #{path}"
       curl = curl_command("#{@host_url.join(path)} -s -o")
       run!("#{curl} - | tar jxf - #{files_to_extract}")
     end
