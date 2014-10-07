@@ -8,6 +8,7 @@ require "language_pack"
 require "language_pack/shell_helpers"
 
 ENV['PATH'] = "#{ENV['HOME']}/vendor/apt/usr/bin:#{ENV['PATH']}"
+ENV['LD_LIBRARY_PATH'] = "#{ENV['HOME']}/vendor/apt/usr/lib/x86_64-linux-gnu:#{ENV['LD_LIBRARY_PATH']}"
 
 LanguagePack::Instrument.trace 'compile', 'app.compile' do
   if pack = LanguagePack.detect(ARGV[0], ARGV[1])
@@ -18,3 +19,4 @@ LanguagePack::Instrument.trace 'compile', 'app.compile' do
     end
   end
 end
+
