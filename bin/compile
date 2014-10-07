@@ -7,8 +7,15 @@ $:.unshift File.expand_path("../../lib", __FILE__)
 require "language_pack"
 require "language_pack/shell_helpers"
 
-ENV['PATH'] = "#{ENV['HOME']}/vendor/apt/usr/bin:#{ENV['PATH']}"
-ENV['LD_LIBRARY_PATH'] = "#{ENV['HOME']}/vendor/apt/usr/lib/x86_64-linux-gnu:#{ENV['LD_LIBRARY_PATH']}"
+ENV['PATH']             = "#{ENV['HOME']}/vendor/apt/usr/bin:#{ENV['PATH']}"
+ENV['LIBRARY_PATH']     = "#{ENV['HOME']}/vendor/apt/usr/lib:#{ENV['LIBRARY_PATH']}"
+ENV['LD_LIBRARY_PATH']  = "#{ENV['HOME']}/vendor/apt/usr/lib:#{ENV['LD_LIBRARY_PATH']}"
+ENV['INCLUDE_PATH']     = "#{ENV['HOME']}/vendor/apt/usr/include:#{ENV['INCLUDE_PATH']}"
+ENV['CPATH']            = ENV['INCLUDE_PATH']
+ENV['CPPPATH']          = ENV['INCLUDE_PATH']
+ENV['INCLUDE']          = ENV['INCLUDE_PATH']
+ENV['C_INCLUDE_PATH']   = ENV['INCLUDE_PATH']
+ENV['CPP_INCLUDE_PATH'] = ENV['INCLUDE_PATH']
 
 LanguagePack::Instrument.trace 'compile', 'app.compile' do
   if pack = LanguagePack.detect(ARGV[0], ARGV[1])
